@@ -30,6 +30,10 @@ async def main(connection):
     await depPanel3.async_send_text("cd ~/projects/main/novu/packages/shared\n")
     await depPanel3.async_send_text("pnpm build:watch\n")
 
+    depPanel4 = await depPanel3.async_split_pane(vertical=True)
+    await depPanel4.async_send_text("ngrok http http://localhost:3000\n")
+
+
 
 
     await servicePanel1.async_send_text("cd ~/projects/main/novu\n")
