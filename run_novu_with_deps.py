@@ -9,6 +9,7 @@ async def main(connection):
         print("No current terminal window found. Creating a new one.")
         window = await app.async_create_window()
     tab = await window.async_create_tab()
+    await tab.async_set_title("Novu With Dependencies")
 
     # Navigate to the project directory
     session = tab.current_session
@@ -17,6 +18,7 @@ async def main(connection):
 
     # todo rename to servicePanel
     servicePanel1 = await paneHorizontal.async_split_pane()
+
 
     depPanel1 = paneHorizontal
     await depPanel1.async_send_text("cd ~/projects/main/novu/libs/application-generic\n")

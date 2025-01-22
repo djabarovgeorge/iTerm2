@@ -9,6 +9,9 @@ async def main(connection):
         print("No current terminal window found. Creating a new one.")
         window = await app.async_create_window()
     tab = await window.async_create_tab()
+    await tab.async_set_title("Bridge App Setup")
+
+
     session = tab.current_session
     pane1 = session
     pane2 = await pane1.async_split_pane()
