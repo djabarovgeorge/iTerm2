@@ -9,16 +9,12 @@ async def main(connection):
         print("No current terminal window found. Creating a new one.")
         window = await app.async_create_window()
     tab = await window.async_create_tab()
-    await tab.async_set_title("Novu Services With Dependencies")
+    await tab.async_set_title("Novu Dependencies")
 
     # Navigate to the project directory
     session = tab.current_session
 
     paneHorizontal = session
-
-    # todo rename to servicePanel
-    servicePanel1 = await paneHorizontal.async_split_pane()
-
 
     depPanel1 = paneHorizontal
     await depPanel1.async_send_text("cd ~/projects/main/novu/libs/application-generic\n")
@@ -34,19 +30,5 @@ async def main(connection):
 
     depPanel4 = await depPanel3.async_split_pane(vertical=True)
     await depPanel4.async_send_text("ngrok http http://localhost:3000\n")
-
-
-
-
-    await servicePanel1.async_send_text("cd ~/projects/main/novu\n")
-    await servicePanel1.async_send_text("pnpm start:api:dev\n")
-
-    servicePanel2 = await servicePanel1.async_split_pane(vertical=True)
-    await servicePanel2.async_send_text("cd ~/projects/main/novu\n")
-    await servicePanel2.async_send_text("pnpm start:worker\n")
-
-    servicePanel3 = await servicePanel2.async_split_pane(vertical=True)
-    await servicePanel3.async_send_text("cd ~/projects/main/novu\n")
-    await servicePanel3.async_send_text("pnpm start:dashboard\n")
 
 iterm2.run_until_complete(main)
