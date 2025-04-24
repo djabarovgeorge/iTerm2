@@ -9,7 +9,7 @@ async def main(connection):
         print("No current terminal window found. Creating a new one.")
         window = await app.async_create_window()
     tab = await window.async_create_tab()
-    await tab.async_set_title("Novu JS")
+    await tab.async_set_title("Novu React")
 
     # Navigate to the project directory
     session = tab.current_session
