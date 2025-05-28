@@ -1,4 +1,5 @@
 import iterm2
+from config import PROJECT_PATH
 
 async def main(connection):
     app = await iterm2.async_get_app(connection)
@@ -21,15 +22,15 @@ async def main(connection):
 
 
     depPanel1 = paneHorizontal
-    await depPanel1.async_send_text("cd ~/projects/main/novu\n")
+    await depPanel1.async_send_text(f"cd {PROJECT_PATH}\n")
     await depPanel1.async_send_text("pnpm --filter @novu/application-generic watch:build\n")
     
     depPanel2 = await depPanel1.async_split_pane(vertical=True)
-    await depPanel2.async_send_text("cd ~/projects/main/novu\n")
+    await depPanel2.async_send_text(f"cd {PROJECT_PATH}\n")
     await depPanel2.async_send_text("pnpm --filter @novu/dal build:watch\n")
 
     depPanel3 = await depPanel2.async_split_pane(vertical=True)
-    await depPanel3.async_send_text("cd ~/projects/main/novu\n")
+    await depPanel3.async_send_text(f"cd {PROJECT_PATH}\n")
     await depPanel3.async_send_text("pnpm --filter @novu/shared build:watch\n")
 
     depPanel4 = await depPanel3.async_split_pane(vertical=True)
@@ -38,15 +39,15 @@ async def main(connection):
 
 
 
-    await servicePanel1.async_send_text("cd ~/projects/main/novu\n")
+    await servicePanel1.async_send_text(f"cd {PROJECT_PATH}\n")
     await servicePanel1.async_send_text("pnpm --filter @novu/api-service start\n")
 
     servicePanel2 = await servicePanel1.async_split_pane(vertical=True)
-    await servicePanel2.async_send_text("cd ~/projects/main/novu\n")
+    await servicePanel2.async_send_text(f"cd {PROJECT_PATH}\n")
     await servicePanel2.async_send_text("pnpm --filter @novu/worker start\n")
 
     servicePanel3 = await servicePanel2.async_split_pane(vertical=True)
-    await servicePanel3.async_send_text("cd ~/projects/main/novu\n")
+    await servicePanel3.async_send_text(f"cd {PROJECT_PATH}\n")
     await servicePanel3.async_send_text("pnpm --filter @novu/dashboard start\n")
 
 iterm2.run_until_complete(main)

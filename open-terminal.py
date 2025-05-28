@@ -1,4 +1,5 @@
 import iterm2
+from config import PROJECT_PATH
 
 async def main(connection):
     app = await iterm2.async_get_app(connection)
@@ -14,5 +15,5 @@ async def main(connection):
     # Navigate to the project directory
     session = tab.current_session
 
-    await session.async_send_text("cd ~/projects/main/novu\n")
+    await session.async_send_text(f"cd {PROJECT_PATH}\n")
 iterm2.run_until_complete(main)

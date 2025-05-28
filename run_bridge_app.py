@@ -1,4 +1,5 @@
 import iterm2
+from config import PROJECT_PATH
 
 async def main(connection):
     app = await iterm2.async_get_app(connection)
@@ -18,7 +19,7 @@ async def main(connection):
     pane3 = await pane2.async_split_pane(vertical=True)
 
 
-    await pane1.async_send_text("cd ~/projects/main/novu\n")
+    await pane1.async_send_text(f"cd {PROJECT_PATH}\n")
     await pane1.async_send_text("pnpm start:web\n")
     
     
