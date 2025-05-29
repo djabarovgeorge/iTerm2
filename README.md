@@ -22,8 +22,11 @@ This repository contains iTerm2 automation scripts to streamline the Novu develo
    ```
 
 3. **Install Scripts Location:**
-   - These scripts should be placed in: `~/Library/Application Support/iTerm2/Scripts/`
-   - Or run them directly from this repository
+   - Clone this repository:
+     ```bash
+     git clone https://github.com/yourusername/iterm2-novu-scripts.git ~/Library/Application\ Support/iTerm2/Scripts/
+     ```
+   - Or manually copy the scripts to: `~/Library/Application Support/iTerm2/Scripts/`
 
 ## Available Scripts
 
